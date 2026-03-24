@@ -84,6 +84,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15935A26689D36D8285B8CE9 /* Build configuration list for PBXNativeTarget "iosApp" */;
 			buildPhases = (
+				4BF9A33D2F732E48000B1C3E /* Delete Swift Modules */,
 				2AEBEF026B13296C064BD570 /* Sources */,
 				57125A5D626A371D24F332E6 /* Frameworks */,
 				13A63D8A5E321F19CFC37BB8 /* Resources */,
@@ -149,6 +150,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BF9A33D2F732E48000B1C3E /* Delete Swift Modules */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Delete Swift Modules";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\nFRAMEWORKS_TO_CLEAN=(\"Shared\" \"Shared2\") # Include the framework name for all Kotlin generated frameworks\nCACHE_DIR=\"${PROJECT_TEMP_ROOT}/SwiftExplicitPrecompiledModules\"\n\nif [ -d \"$MODULE_CACHE_DIR\" ]; then\n    echo \"--- Starting targeted cache cleanup... ---\"\n    \n    for FRAMEWORK in \"${FRAMEWORKS_TO_CLEAN[@]}\"; do\n        echo \"- Searching for: ${FRAMEWORK}-*\"\n        find \"$CACHE_DIR\" -maxdepth 1 -name \"${FRAMEWORK}-*\" -exec rm -rf {} +\n    done\n    \n    echo \"--- Finished clearing specific module caches. ---\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2AEBEF026B13296C064BD570 /* Sources */ = {
